@@ -1,0 +1,22 @@
+section {
+  &.head {
+    margin: 5rem 0 2.5rem 0;
+  }
+
+  & > svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: -1;
+  }
+}
+
+#form{
+  width: 30%;
+
+  @media only screen and (max-width: 600px) {
+    width: 80%;
+  }
+}

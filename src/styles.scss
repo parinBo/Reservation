@@ -1,0 +1,48 @@
+@import 'src/assets/scss/fontawesome.scss';
+@import "src/assets/scss/regular.scss";
+@import "src/assets/scss/solid.scss";
+@import "src/assets/scss/brands.scss";
+
+.line {
+  border-top: 1px solid black;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.toast {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  &.show{
+      opacity: 1;
+  }
+}
+
+
+.color{
+  &-blue{
+    color: blue;
+  }
+
+  &-invalid{
+    color: #a94442;
+  }
+}
+.bg{
+  &-white{
+  background-color: #fff;
+  }
+}
+p {
+  font-family: 'Prompt', sans-serif;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(section)  {
+  border-left: 5px solid #a94442; /* red */
+  background-color: #ffd8d8;
+}

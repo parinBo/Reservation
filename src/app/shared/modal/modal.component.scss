@@ -1,0 +1,17 @@
+.fadeIn{
+  animation: fade 1s;
+  transform: translate(0,100px);
+}
+
+
+
+@keyframes fade {
+  0%{
+    top:-50px;
+    opacity: 0;
+  }
+  100%{
+    top:0px;
+    opacity: 1;
+  }
+}
