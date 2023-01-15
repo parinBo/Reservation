@@ -17,7 +17,7 @@ export class ValidateMessageComponent implements OnInit {
 
   get message(){
     let msg  = '';
-    if(this.control?.invalid && (this.control.touched || this.control.dirty || this.control.touched)){
+    if(this.control?.invalid && (this.control.touched || this.control.dirty)){
       for(const error in this.control?.errors){
         msg = this.errorMessage(error)
       }
@@ -26,6 +26,7 @@ export class ValidateMessageComponent implements OnInit {
   }
 
   errorMessage(errorName: string){
+    console.log(errorName,this.control)
     const err: {[key: string]:any} = VALIDATE_MESSAGES
     return err[errorName];
   }

@@ -76,21 +76,21 @@ export class CreateAccountComponent implements OnInit, AfterViewInit {
       UIService.setLoading(true);
       this.api.createUser(user).subscribe((result) => {
         UIService.setLoading(false);
-        console.log(result)
         let msg = ''
-        if(result.msg === 'success'){
+        if(result.status[0] === 's'){
           this.toastService.showToast('Success','s')
-          if(result.status === 'sameAccount'){
-            msg = result.data;
-          }else{
             msg = 'สมัครสำเร็จ กำลังกลับสู่หน้าลงชื่อเข้าใช้งาน';
+            UIService.setLoading(true);
             setTimeout(()=>{
               this.route.navigateByUrl('/login');
-              this.modalService.close('modal');
-            },2000)
-          }
-          this.modalService.open('modal',msg)
+              this.modalService.close('mainModal');
+              UIService.setLoading(false);
+            },1000)
+        }else{
+          this.toastService.showToast('Error',result.status)
+          msg = result.msg;
         }
+        this.modalService.open('mainModal',msg,false)
       },(err)=>{
         UIService.setLoading(false);
       })

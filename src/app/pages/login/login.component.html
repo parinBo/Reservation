@@ -2,7 +2,6 @@
 <section  class="head text-center">
   <p class="fs-2 fw-bold">Reservation</p>
 </section>
-<app-modal [id]="'modal'"></app-modal>
 <section [formGroup]="form">
   <div class="d-flex flex-column align-items-center justify-content-center">
     <div class="card h-100" id="form" >
@@ -14,7 +13,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label ">password:</label>
-          <input type="text" class="form-control" placeholder="password" formControlName="password">
+          <input type="password" class="form-control" placeholder="password" formControlName="password">
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary w-50 h-25" (click)="signin()">Sign in</button>
@@ -25,47 +24,4 @@
     </div>
   </div>
 </section>
-<section>
-  <svg width="100%" height="100%">
-    <circle id="circle" cx="60" cy="60" r="20" fill="#2eb04f" onclick="clickCircle();">
-        <animateMotion id="ani" dur="10s" repeatCount="indefinite"
-      path="M20, 60 C20,
-            -50 180, 150 180,
-             60 C180-60 20,
-             150 20, 60 z" />
-    </circle>
-    <circle id="circle" cx="80%" cy="60" r="30" fill="#2eb04f" onclick="clickCircle();">
-      <animateMotion id="ani" dur="10s" repeatCount="indefinite"
-      path="M20, 60 C20,
-      -50 180,
-       -160  200,
-       60 z" />
-  </circle>
-  <circle id="circle" cx="90" cy="500" r="20" fill="#2eb04f">
-    <animateMotion id="ani" dur="10s" repeatCount="indefinite"
-    path="M100,-250 -100, 100 z" />
-</circle>
-<circle id="circle" cx="80%" cy="500" r="15" fill="#2eb04f">
-  <animateMotion id="ani" dur="5s" repeatCount="indefinite"
-  path="M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z" />
-
-</circle>
-<circle id="circle" cx="40%" cy="500"  r="20" fill="#2eb04f">
-  <animateMotion id="ani" dur="15s" repeatCount="indefinite"
-  path="M40 100, 200 300 ,30 100, 300 300,300 -300,100 -400,Z" />
-</circle>
-</svg>
-  <svg width="100%" height="100%" viewBox="0 0 1049 930" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M1048.5 589.5C1048.5 664.019 982.727 724.5 901.5 724.5C820.273 724.5 754.5 664.019 754.5 589.5C754.5 514.981 820.273 454.5 901.5 454.5C982.727 454.5 1048.5 514.981 1048.5 589.5Z" fill="#0C6FC1" stroke="black"/>
-    <path d="M298.5 290C298.5 326.717 268.066 356.5 230.5 356.5C192.934 356.5 162.5 326.717 162.5 290C162.5 253.283 192.934 223.5 230.5 223.5C268.066 223.5 298.5 253.283 298.5 290Z" fill="#0C6FC1" stroke="black"/>
-    <path d="M364.5 734.5C364.5 790.773 312.405 836.5 248 836.5C183.595 836.5 131.5 790.773 131.5 734.5C131.5 678.227 183.595 632.5 248 632.5C312.405 632.5 364.5 678.227 364.5 734.5Z" fill="#0C6FC1" stroke="black"/>
-    <path d="M933.5 138C933.5 202.305 877.125 254.5 807.5 254.5C737.875 254.5 681.5 202.305 681.5 138C681.5 73.6949 737.875 21.5 807.5 21.5C877.125 21.5 933.5 73.6949 933.5 138Z" fill="#0C6FC1" fill-opacity="0.6" stroke="black"/>
-    <path d="M95.5 472.5C95.5 497.89 74.2486 518.5 48 518.5C21.7514 518.5 0.5 497.89 0.5 472.5C0.5 447.11 21.7514 426.5 48 426.5C74.2486 426.5 95.5 447.11 95.5 472.5Z" fill="#0C6FC1" fill-opacity="0.2" stroke="black"/>
-    <path d="M238.5 46.5C238.5 71.8903 217.249 92.5 191 92.5C164.751 92.5 143.5 71.8903 143.5 46.5C143.5 21.1097 164.751 0.5 191 0.5C217.249 0.5 238.5 21.1097 238.5 46.5Z" fill="#0C6FC1" fill-opacity="0.5" stroke="black"/>
-    <path d="M95.5 883.5C95.5 908.89 74.2486 929.5 48 929.5C21.7514 929.5 0.5 908.89 0.5 883.5C0.5 858.11 21.7514 837.5 48 837.5C74.2486 837.5 95.5 858.11 95.5 883.5Z" fill="#0C6FC1" fill-opacity="0.5" stroke="black"/>
-    <path d="M1032.5 305.5C1032.5 319.241 1019.59 330.5 1003.5 330.5C987.413 330.5 974.5 319.241 974.5 305.5C974.5 291.759 987.413 280.5 1003.5 280.5C1019.59 280.5 1032.5 291.759 1032.5 305.5Z" fill="#0C6FC1" stroke="black"/>
-    <path d="M86 658C86 668.966 75.342 678 62 678C48.658 678 38 668.966 38 658C38 647.034 48.658 638 62 638C75.342 638 86 647.034 86 658Z" fill="#0C6FC1" stroke="black"/>
-    <path d="M973.5 879.5C973.5 890.466 962.842 899.5 949.5 899.5C936.158 899.5 925.5 890.466 925.5 879.5C925.5 868.534 936.158 859.5 949.5 859.5C962.842 859.5 973.5 868.534 973.5 879.5Z" fill="#0C6FC1" stroke="black"/>
-    </svg>
-
-</section>
+<app-bg-one></app-bg-one>

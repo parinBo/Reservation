@@ -5,10 +5,15 @@ import { ValidateMessageComponent } from "./validate-message/validate-message.co
 import { LoaderComponent } from './loader/loader.component';
 import { ToastComponent } from './toast/toast.component';
 import { ModalComponent } from './modal/modal.component';
+import { BgOneComponent } from './bg-one/bg-one.component';
 
 @NgModule({
   declarations:[
-    ValidateMessageComponent, LoaderComponent, ToastComponent, ModalComponent
+    ValidateMessageComponent,
+    LoaderComponent,
+    ToastComponent,
+    ModalComponent,
+    BgOneComponent
   ],
   providers:[],
   imports:[
@@ -16,7 +21,11 @@ import { ModalComponent } from './modal/modal.component';
     FormsModule,
     ReactiveFormsModule,],
   exports:[
-    ValidateMessageComponent,LoaderComponent,ToastComponent,ModalComponent
+    ValidateMessageComponent,
+    LoaderComponent,
+    ToastComponent,
+    ModalComponent,
+    BgOneComponent
   ]
 })
 export class SharedModule{}

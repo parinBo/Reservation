@@ -11,7 +11,15 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HTTP_Interceptor } from './config/http_intercep';
-
+import { JwtModule } from "@auth0/angular-jwt";
+import { MapComponent } from './pages/map/map.component';
+import { OrderComponent } from './pages/order/order.component';
+import { registerLocaleData } from '@angular/common';
+import local from '@angular/common/locales/th';
+registerLocaleData(local, 'th')
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +27,8 @@ import { HTTP_Interceptor } from './config/http_intercep';
     LoginComponent,
     HomeComponent,
     CreateAccountComponent,
+    MapComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +36,14 @@ import { HTTP_Interceptor } from './config/http_intercep';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["*"],
+        disallowedRoutes: [""],
+      },
+    }),
   ],
   providers: [
     ReservationService,

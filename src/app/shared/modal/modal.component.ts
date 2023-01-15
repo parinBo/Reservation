@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -12,48 +12,42 @@ export class ModalComponent implements OnInit {
   @Input() message!: string;
   @Input() footerFlag: boolean = true;
   @Output() okBtn = new EventEmitter();
+  @ViewChild('modal')modalElement!: ElementRef;
   constructor(private ele: ElementRef, private modalService: ModalService) {
-  }
-
-  set msg(data: string){
-    this.message = data;
-  }
-
-  set footer(bool:boolean){
-    this.footerFlag = bool;
   }
 
   ngOnInit(): void {
     this.modalService.add(this)
   }
 
-  open(){
-    const backdrop =document.createElement('div');
+  open(msg = '', footer:boolean){
+    const backdrop = document.createElement('div');
     backdrop.classList.add('modal-backdrop','show');
     document.body.appendChild(backdrop);
-    this.modalAdjust('show', 'block', 'add');
-
+    this.modalAdjust('fadeIn', 'block', 'add');
+    this.message = msg;
+    this.footerFlag = footer;
   }
 
-  okBtnClick(){
+  onBtnOkClick(){
     this.okBtn.emit(true);
     this.close();
   }
 
-
   close(){
-   this.modalAdjust('show', 'none', 'remove');
+   this.modalAdjust('fadeIn', 'none', 'remove');
     document.querySelector('.modal-backdrop')?.remove()
   }
 
+
   private  modalAdjust(className:string, display: string,option: string){
-    const modal = (this.ele.nativeElement as HTMLElement).querySelector('.modal');
-    if(option === 'remove'){
-      modal?.classList.remove(className);
-    }else{
-      modal?.classList.add(className,'fadeIn');
-    }
+    const modal = this.modalElement.nativeElement
+    modal?.classList[option](className);
     (modal as HTMLElement).style.display = display;
   }
 
 }
+function ngAfterViewInit() {
+  throw new Error('Function not implemented.');
+}
+

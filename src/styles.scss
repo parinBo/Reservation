@@ -11,6 +11,7 @@
   cursor: pointer;
 }
 
+
 .toast {
   opacity: 0;
   transition: opacity 1s ease-out;
@@ -34,7 +35,7 @@
   background-color: #fff;
   }
 }
-p {
+p,span {
   font-family: 'Prompt', sans-serif;
 }
 
