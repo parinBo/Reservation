@@ -17,7 +17,7 @@
   <div class="mt-3 d-flex justify-content-center ">
     <div class="col-md-5 d-flex ">
       <div class="col-md-6">
-        <input type="date" class="form-control" id="date" formControlName="date"/>
+        <input type="date" class="form-control" id="date" formControlName="date" [min]="dateNow"/>
       </div>
       <div class="col-md-6">
       <button type="button" class="btn border border-dark  mx-4" style="background-color: #FFCBDB;" (click)="onClickOrder()">รายการจอง</button>
@@ -32,7 +32,8 @@
           <option *ngFor="let item of listTimes" value="{{item.id}}">{{item?.time}}</option>
         </select>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" *ngIf="role === 1">
+        <button type="button" class="btn border border-dark  mx-4" style="background-color: #FFCBDB;" (click)="onClickOrder()">รายการจอง</button>
       </div>
     </div>
   </div>

@@ -27,7 +27,6 @@ const getSeat = async (req:Request, res:Response) => {
       const seats = await getSeatData(data,userId);
       res.status(parseInt(STATUS_CODE.OK)).json(responseData('s',STATUS_CODE.OK,seats))
     }else{
-      console.log(!parseInt(data.timeId));
       let err = '';
       if(!data.nameId) err += '<br>-โปรดเลือกสถานที่';
       if(!parseInt(data.timeId)) {
@@ -36,7 +35,6 @@ const getSeat = async (req:Request, res:Response) => {
       res.status(parseInt(STATUS_CODE.BAD_REQUEST)).json(responseData('s',STATUS_CODE.BAD_REQUEST,err))
     }
   }catch(e:any){
-    console.log(e)
     res.status(parseInt(STATUS_CODE.INTERNAL_SERVER_ERROR)).json(responseData('s',STATUS_CODE.INTERNAL_SERVER_ERROR,e.code))
   }
 }

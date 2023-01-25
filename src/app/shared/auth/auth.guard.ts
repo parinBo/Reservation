@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import * as jwt from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,25 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+
+      let data: { [key: string]: string } = {};
+      if(localStorage.getItem('token')){
+        data =  jwt.default(localStorage.getItem('token') as string);
+      }
     if (this.authService.isLogin()) {
-      return true;
+      console.log(route.data['role']);
+      if(route.data['role']) {
+        console.log(route.data['role'] , data['role']);
+        if(route.data['role'] === data['role']) {
+          return true;
+        }else {
+          this.route.navigate(['']);
+        }
+      }else {
+        return true;
+      }
+      return false
     } else {
       this.route.navigate(['/login']);
       return false;

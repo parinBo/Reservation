@@ -14,4 +14,10 @@ export class AuthService {
   async user(){
     return  await jwt.default(localStorage.getItem('token') as string);
   }
+
+  async getRole(){
+    const data: { [key: string]: string } =   await jwt.default(localStorage.getItem('token') as string);
+    console.log(data['role']);
+    return data['role'];
+  }
 }

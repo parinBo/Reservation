@@ -16,6 +16,7 @@ import { MapComponent } from './pages/map/map.component';
 import { OrderComponent } from './pages/order/order.component';
 import { registerLocaleData } from '@angular/common';
 import local from '@angular/common/locales/th';
+import { AdminComponent } from './pages/admin/admin.component';
 registerLocaleData(local, 'th')
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -29,6 +30,7 @@ export function tokenGetter() {
     CreateAccountComponent,
     MapComponent,
     OrderComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

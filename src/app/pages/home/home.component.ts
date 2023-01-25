@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { dataControl } from 'src/app/models/data';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
@@ -30,6 +31,8 @@ export class HomeComponent implements OnInit {
   get nameId() {return this.formGroup.controls['nameId'];}
   get timeId() {return this.formGroup.controls['timeId'];}
   get date() {return this.formGroup.controls['date'];}
+  get dateNow() {return moment().format('YYYY-MM-DD');}
+  get role() {return (this.auth.user() as any)?.role || '';}
 
 
   constructor(private auth:AuthService,
@@ -82,6 +85,10 @@ export class HomeComponent implements OnInit {
       if(!this.timeId.value) this.timeId.setErrors(Validators.required)
     }
     return false;
+  }
+
+  getRole() {
+    return this.name = (this.auth.user() as any)?.role || '';
   }
 
 }

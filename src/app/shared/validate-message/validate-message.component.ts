@@ -26,7 +26,6 @@ export class ValidateMessageComponent implements OnInit {
   }
 
   errorMessage(errorName: string){
-    console.log(errorName,this.control)
     const err: {[key: string]:any} = VALIDATE_MESSAGES
     return err[errorName];
   }
