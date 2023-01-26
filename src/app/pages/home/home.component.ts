@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   get timeId() {return this.formGroup.controls['timeId'];}
   get date() {return this.formGroup.controls['date'];}
   get dateNow() {return moment().format('YYYY-MM-DD');}
-  get role() {return (this.auth.user() as any)?.role || '';}
+  get role(): number {return parseInt(this.auth.user()?.['role']) || 0;}
 
 
   constructor(private auth:AuthService,
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder) { }
 
   async ngOnInit(): Promise<void> {
-    this.name = (await this.auth.user() as any)?.username || '';
+    this.name = (this.auth.user() as any)?.username || '';
     this.api.listBuilding().subscribe(res=>{
       this.listBuildings = res.data;
       dataControl.listBuilding = this.listBuildings;
@@ -58,6 +58,10 @@ export class HomeComponent implements OnInit {
 
   onClickOrder(){
     this.route.navigate(['order'])
+  }
+
+  onClickAdmin(){
+    this.route.navigate(['admin'])
   }
 
   async onClickMap(){
@@ -87,8 +91,8 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
-  getRole() {
-    return this.name = (this.auth.user() as any)?.role || '';
+  async getRole() {
+    return  (this.auth.user() as any)?.role || '';
   }
 
 }

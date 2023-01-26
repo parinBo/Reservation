@@ -9,9 +9,23 @@
         <p class="m-auto">{{date | date:'วันที่ dd-MM-YYYY เวลา HH:mm:ss'}}</p>
 
       </div>
-      <div class="col-md-2 btn-logout">
+      <div class="col-md-2 btn-logout" *ngIf="role === 0;else admin">
         <button class="btn btn-outline-danger" type="button" (click)="onLogout()">Logout</button>
       </div>
+      <ng-template #admin>
+        <div class="col-md-2 text-end" >
+          <button class="btn" (click)="adminExpand()"><i class="fa-solid fa-bars" ></i></button>
+        </div>
+      </ng-template>
     </div>
   </div>
 </nav>
+
+<div class="sidenav" #sideNav>
+  <div class="position-absolute">
+    <i class="fa-sharp fa-solid fa-circle-xmark float-end" style="font-size:27px" (click)="adminClose()"></i>
+    <p class="text-white float-center">Home</p>
+    <p class="text-white float-center">Setting</p>
+  </div>
+
+</div>

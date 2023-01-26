@@ -11,8 +11,9 @@ export class AuthService {
     return !!localStorage.getItem('token')
   }
 
-  async user(){
-    return  await jwt.default(localStorage.getItem('token') as string);
+  user(): {[key :string]: string}{
+    return  jwt.default(localStorage.getItem('token') as string);
+
   }
 
   async getRole(){
